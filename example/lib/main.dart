@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:slideable_pop_scope/slideable_pop_scope.dart';
 
@@ -26,7 +27,7 @@ class PageA extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
+            Navigator.push(context, CupertinoPageRoute(
               builder: (context) {
                 return const PageB();
               },

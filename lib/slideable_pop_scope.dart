@@ -1,10 +1,9 @@
 library slideable_pop_scope;
 
 import 'dart:async';
-import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 
 class SlideablePopScope extends StatefulWidget {
   /// Creates a widget that registers a callback to veto attempts by the user to
@@ -117,7 +116,7 @@ class _SlideablePopScopeState extends State<SlideablePopScope>
   @override
   Widget build(BuildContext context) {
     Widget child = widget.child;
-    if (Platform.isIOS) {
+    if (_route is CupertinoRouteTransitionMixin) {
       child = RawGestureDetector(
         gestures: {
           _SDSlideBackGestureRecognizer: GestureRecognizerFactoryWithHandlers<
