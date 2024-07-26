@@ -2,6 +2,7 @@ name: slideable_pop_scope
 description: "A new Flutter package project."
 version: 1.0.0
 homepage:
+repository: https://github.com/HAM02020/slideable_pop_scope
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
