@@ -1,5 +1,5 @@
 
-# flutter_svg
+# slideable_pop_scope
 
 [![Pub](https://img.shields.io/pub/v/slideable_pop_scope)](https://pub.dartlang.org/packages/slideable_pop_scope) [![Coverage Status](https://coveralls.io/repos/github/HAM02020/slideable_pop_scope/badge.svg?branch=main)](https://coveralls.io/github/HAM02020/slideable_pop_scope?branch=main)
 
