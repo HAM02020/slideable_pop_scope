@@ -1,11 +1,11 @@
 name: slideable_pop_scope
 description: "Popscope that easy to used and adapted to iOS slide to go back gesture"
-version: 1.0.0
+version: 1.0.1
 homepage:
 repository: https://github.com/HAM02020/slideable_pop_scope
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
