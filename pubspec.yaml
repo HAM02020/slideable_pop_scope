@@ -1,5 +1,5 @@
 name: slideable_pop_scope
-description: "A new Flutter package project."
+description: "Popscope that easy to used and adapted to iOS side slide back gesture"
 version: 1.0.0
 homepage:
 repository: https://github.com/HAM02020/slideable_pop_scope
