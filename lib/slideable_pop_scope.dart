@@ -73,7 +73,9 @@ class _SlideablePopScopeState extends State<SlideablePopScope>
         final onWillPop = widget.onWillPop;
         if (onWillPop != null) {
           if (await onWillPop.call()) {
-            Navigator.pop(context);
+            if (mounted) {
+              Navigator.pop(context);
+            }
           }
         }
       };
