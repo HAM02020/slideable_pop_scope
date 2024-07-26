@@ -104,7 +104,7 @@ class _SlideablePopScopeState extends State<SlideablePopScope>
   @override
   void didUpdateWidget(SlideablePopScope oldWidget) {
     super.didUpdateWidget(oldWidget);
-    canPopNotifier.value = widget.canPop;
+    canPopNotifier.value =widget.onWillPop != null ? false : widget.canPop;
   }
 
   @override
