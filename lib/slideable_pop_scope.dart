@@ -12,8 +12,13 @@ class SlideablePopScope extends StatefulWidget {
     super.key,
     required this.child,
     this.canPop = true,
+    @Deprecated(
+      'Use onPopInvokedWithResult instead. '
+      'This feature was deprecated after v3.22.0-12.0.pre.',
+    )
     this.onPopInvoked,
     this.onWillPop,
+    this.onPopInvokedWithResult,
   });
 
   /// The widget below this widget in the tree.
@@ -38,7 +43,13 @@ class SlideablePopScope extends StatefulWidget {
   /// See also:
   ///
   ///  * [Route.onPopInvoked], which is similar.
+  @Deprecated(
+    'Use onPopInvokedWithResult instead. '
+    'This feature was deprecated after v3.22.0-12.0.pre.',
+  )
   final PopInvokedCallback? onPopInvoked;
+
+  final PopInvokedWithResultCallback? onPopInvokedWithResult;
 
   final FutureOr<bool> Function()? onWillPop;
 
@@ -66,18 +77,32 @@ class _SlideablePopScopeState extends State<SlideablePopScope>
   ModalRoute<dynamic>? _route;
 
   @override
-  PopInvokedCallback? get onPopInvoked => (bool didPop) async {
-        if (didPop) return;
-        widget.onPopInvoked?.call(didPop);
-        final onWillPop = widget.onWillPop;
-        if (onWillPop != null) {
-          if (await onWillPop.call()) {
-            if (mounted) {
-              Navigator.pop(context);
-            }
-          }
+  void onPopInvoked(bool didPop) async {
+    if (didPop) return;
+    widget.onPopInvoked?.call(didPop);
+    final onWillPop = widget.onWillPop;
+    if (onWillPop != null) {
+      if (await onWillPop.call()) {
+        if (mounted) {
+          Navigator.pop(context);
         }
-      };
+      }
+    }
+  }
+
+  @override
+  void onPopInvokedWithResult(bool didPop, result) async {
+    if (didPop) return;
+    widget.onPopInvoked?.call(didPop);
+    final onWillPop = widget.onWillPop;
+    if (onWillPop != null) {
+      if (await onWillPop.call()) {
+        if (mounted) {
+          Navigator.pop(context);
+        }
+      }
+    }
+  }
 
   @override
   late final ValueNotifier<bool> canPopNotifier;
@@ -103,7 +128,7 @@ class _SlideablePopScopeState extends State<SlideablePopScope>
   @override
   void didUpdateWidget(SlideablePopScope oldWidget) {
     super.didUpdateWidget(oldWidget);
-    canPopNotifier.value =widget.onWillPop != null ? false : widget.canPop;
+    canPopNotifier.value = widget.onWillPop != null ? false : widget.canPop;
   }
 
   @override
